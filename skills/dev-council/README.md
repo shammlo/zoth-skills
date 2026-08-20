@@ -73,7 +73,7 @@ The One Thing to Do First
 Copy this skill directory into your skills folder:
 
 ```bash
-git clone https://github.com/<you>/zoth-skills.git
+git clone https://github.com/shammlo/zoth-skills.git
 cp -r zoth-skills/skills/dev-council ~/.claude/skills/
 ```
 
