@@ -1,14 +1,14 @@
-# Surface Rubrics — adversary
+# Surface Rubrics for adversary
 
 One rubric per attack surface. Each reviewer receives **only its own rubric**, plus the intent and the diff.
 
-**Select three or four. Selecting all ten is the failure mode this file exists to prevent** — ten reviewers each expected to produce findings will produce findings, and the real one ends up buried. Each rubric below opens with a "select this when" cue. If none of the cues match the change, that surface isn't relevant, and saying so in the output is a result.
+**Select three or four. Selecting all ten is the failure mode this file exists to prevent**. Ten reviewers each expected to produce findings will produce findings, and the real one ends up buried. Each rubric below opens with a "select this when" cue. If none of the cues match the change, that surface isn't relevant, and saying so in the output is a result.
 
 ---
 
 ## Correctness
 
-*Select when:* almost always — this is the default surface. Skip only for changes with no behavior (formatting, comments, dependency bumps with no API change).
+*Select when:* almost always. This is the default surface. Skip only for changes with no behavior (formatting, comments, dependency bumps with no API change).
 
 Does the code do what the intent says? Trace the actual paths, not the happy one. Off-by-one and boundary conditions. Empty, null, and single-element inputs. Error paths that swallow, mask, or re-raise wrongly. Return values that differ from what callers expect. Conditions that read correctly and evaluate wrongly. State that's mutated when the caller assumed a copy.
 
@@ -18,15 +18,15 @@ Ask specifically: what input makes this wrong? Name it concretely rather than ge
 
 *Select when:* the change touches auth, sessions, permissions, roles, tenant scoping, user input, file paths, credentials, tokens, external requests, or anything that renders untrusted content.
 
-Authorization checked at every entry point, not just the obvious one. **Verify the negative case** — that the wrong role, wrong tenant, or wrong owner is actually rejected. A test proving the right user succeeds proves nothing about the check. Injection paths (SQL, command, path traversal, template). Secrets in logs, errors, or responses. Tokens with wrong scope or lifetime. Input trusted because it arrived from an internal caller that doesn't validate it either.
+Authorization checked at every entry point, not just the obvious one. **Verify the negative case**, that the wrong role, wrong tenant, or wrong owner is actually rejected. A test proving the right user succeeds proves nothing about the check. Injection paths (SQL, command, path traversal, template). Secrets in logs, errors, or responses. Tokens with wrong scope or lifetime. Input trusted because it arrived from an internal caller that doesn't validate it either.
 
 Security failures are usually silent: the wrong answer looks like a normal response.
 
 ## Data integrity
 
-*Select when:* the change writes, migrates, deletes, or changes the shape of stored data — including schema changes, background writes, and anything with a unique constraint.
+*Select when:* the change writes, migrates, deletes, or changes the shape of stored data, including schema changes, background writes, and anything with a unique constraint.
 
-What happens to rows already written under the old assumption. Partial writes and interrupted operations. Transaction boundaries — is the unit of work actually atomic. Duplicate or retried operations that double-create. Cascading deletes reaching further than intended. Migrations that can't be rolled back, or that lock a table long enough to matter. Constraints enforced in code but not in the database.
+What happens to rows already written under the old assumption. Partial writes and interrupted operations. Transaction boundaries, and whether the unit of work is actually atomic. Duplicate or retried operations that double-create. Cascading deletes reaching further than intended. Migrations that can't be rolled back, or that lock a table long enough to matter. Constraints enforced in code but not in the database.
 
 Ask: if this ran twice, or halfway, what would the data look like?
 
@@ -48,7 +48,7 @@ Skip this surface honestly when the change is genuinely single-threaded and sing
 
 ## Failure handling
 
-*Select when:* the change calls anything that can fail — network, database, filesystem, external service — or adds retry, timeout, or fallback behavior.
+*Select when:* the change calls anything that can fail (network, database, filesystem, external service), or adds retry, timeout, or fallback behavior.
 
 What happens when the dependency is down, slow, or returns something unexpected. Timeouts present and sized deliberately. Retries that are safe to repeat, with backoff. Errors that lose the original cause. Failures that leave state half-updated. Fallbacks that mask an outage until it's much worse. Errors logged at a level nobody reads.
 
@@ -70,7 +70,7 @@ Lowest-severity surface by default. Findings here rarely block a merge, and fram
 
 ## Testing
 
-*Select when:* almost always alongside correctness — but focused on the reach of the change, not the file that changed.
+*Select when:* almost always alongside correctness, but focused on the reach of the change, not the file that changed.
 
 Does coverage exist over the behavior that changed, and over what it reaches? Tests asserting the implementation rather than the behavior, and which will fail on a valid refactor. Failure paths untested while the happy path is covered three times. Tests that pass whether or not the code works. Mocks so thorough the test proves only that the mock was called.
 
@@ -80,4 +80,4 @@ The gap that matters is untested *reach*, not untested lines.
 
 *Select when:* the change affects deploy, configuration, migrations, feature flags, monitoring, or anything whose failure would need to be noticed in production.
 
-Is this observable when it breaks — would anyone find out from monitoring rather than from a user? Deploy order requirements, and whether anything enforces them. Rollback: is it possible, and does it work with the data written meanwhile. Configuration differing across environments. Feature flags with no removal plan. New failure modes with no alert.
+Is this observable when it breaks? Would anyone find out from monitoring rather than from a user? Deploy order requirements, and whether anything enforces them. Rollback: is it possible, and does it work with the data written meanwhile. Configuration differing across environments. Feature flags with no removal plan. New failure modes with no alert.
