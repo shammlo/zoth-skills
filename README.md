@@ -37,11 +37,15 @@ cp -r zoth-skills/skills/impact ~/.claude/skills/
 
 Use `~/.claude/skills/` for personal skills or `.claude/skills/` inside a project for project-scoped ones. Skills that ship a log or calibration list start empty and fill in from your own projects, so nothing arrives pre-loaded with someone else's history.
 
+Skill names aren't yet namespace-protected by the Claude Code platform (tracking [anthropics/claude-code#50486](https://github.com/anthropics/claude-code/issues/50486)). If a name collides with another installed plugin's skill, rename on your end for now.
+
 ## About
 
 Built by Shamlo, who goes by Zoth. Portfolio and writing: [shamlo.dev](https://shamlo.dev).
 
 Some skills borrow names from a speculative fiction universe I'm writing. The naming is an identity layer; the engineering roles underneath are always stated explicitly.
+
+Several skills adapt patterns from [pstack](https://github.com/cursor/plugins/tree/main/pstack) by Lauren Tan (MIT), reworked rather than copied. See [source-reference.md](source-reference.md).
 
 ## License
 
