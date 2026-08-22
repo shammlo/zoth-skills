@@ -1,6 +1,6 @@
 ---
 name: reflect
-description: Captures durable lessons from work that succeeded — what happened, which assumptions turned out wrong, what's reusable — and routes each one to where it should actually live. Proposes routings; never applies them unasked. Use after finishing significant work: a shipped feature, a completed migration, a refactor that landed. Trigger on "reflect", "what did we learn", "post-mortem", "retro", or finishing a non-trivial piece of work. Not for failures — if something passed its checks and broke anyway, that belongs in `verify`'s incident log instead.
+description: "Captures durable lessons from work that succeeded — what happened, which assumptions turned out wrong, what's reusable — and routes each one to where it should actually live. Proposes routings; never applies them unasked. Use after finishing significant work: a shipped feature, a completed migration, a refactor that landed. Trigger on \"reflect\", \"what did we learn\", \"post-mortem\", \"retro\", or finishing a non-trivial piece of work. Not for failures — if something passed its checks and broke anyway, that belongs in `verify`'s incident log instead."
 ---
 
 # Reflect
