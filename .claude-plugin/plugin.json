@@ -1,0 +1,9 @@
+{
+  "name": "zoth-skills",
+  "description": "Engineering discipline skills for Claude Code — runtime verification, change-impact mapping, adversarial review, scope discipline, and more, distilled from real incidents rather than hypotheticals.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Shamlo"
+  },
+  "repository": "https://github.com/shammlo/zoth-skills.git"
+}
