@@ -42,7 +42,7 @@ Unofficial and unendorsed by Lauren Tan or Cursor. Read it as a second data poin
 | `clarity` | `pstack/skills/unslop/SKILL.md` | Same source as distill, different application: this is the prose-facing half |
 | `codify` | `pstack/skills/principle-encode-lessons-in-structure/SKILL.md` | Resolve the overlap with verify's incident log (see roadmap) before building either |
 | `reflect` | `pstack/skills/reflect/SKILL.md`, `pstack/skills/recall/SKILL.md` | Same resolve-before-building flag as codify |
-| `context` (deferred) | `pstack/skills/how/SKILL.md`, `pstack/skills/interrogate/SKILL.md`, `pstack/skills/architect/SKILL.md` | Not building this as its own skill yet; these three show how pstack scopes context for their own subagents, useful once revisited |
+| `context` | `pstack/skills/principle-guard-the-context-window/SKILL.md`, `pstack/skills/how/SKILL.md`, `pstack/skills/poteto-mode/SKILL.md` (Subagents section) | The principle is the core; `how` shows scoped explorer briefs; poteto-mode's subagent defaults supply pointers-not-payloads and model per role. `interrogate` and `architect` show the same scoping pattern |
 
 ## A caution worth repeating here
 

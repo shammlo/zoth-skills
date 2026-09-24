@@ -225,11 +225,15 @@ Already built. Optional future integration: let it consume `impact` and `investi
 
 ---
 
-## 10. context: not ready to be a numbered skill
+## 10. context: BUILT
 
-**Inspired by:** pstack's general context-management discipline across its subagent-spawning skills (`how`, `interrogate`, `architect` all construct scoped context for their subagents) rather than any single named skill.
+**Inspired by (verified):** `principle-guard-the-context-window`, plus the scoped-context pattern in `how`, `interrogate`, and `architect`, and poteto-mode's subagent defaults (file pointers not inlined context, model per role).
 
-**Status flag, unchanged from v1:** the source material itself describes this as shared infrastructure, not something invoked manually. Don't build it as its own skill yet; revisit once `impact`, `investigate`, and `adversary` are actually running as subagents and you can see whether context-bloat is a real, observed problem.
+**Named incident:** reported heavy token use, followed by an audit of this repo's own skills: ~4.7 KB of descriptions loaded into every session, `dev-council` and `adversary` (both fan-out skills) able to auto-trigger, `verify` triggering on "done". Fixed in the same change that built this skill; the skill is the discipline that keeps those from recurring.
+
+**Interface:** skill, inline. The value is in how reads and delegation happen in real time, which a subagent can't do on the main thread's behalf. Includes an audit mode for "why is this costing so much".
+
+**Status:** first draft complete (`SKILL.md`, no references file, since everything in it is needed on every run).
 
 ---
 
@@ -239,5 +243,5 @@ Already built. Optional future integration: let it consume `impact` and `investi
 - `clarity` has no dependency on anything else; buildable any time, already drafted
 - `adversary` is conceptually downstream of dev-council, buildable independently
 - `codify` and `reflect`: don't build both until the overlap with `verify`'s incident log is resolved
-- `context`: not ready yet, revisit after the subagent-based skills are running
+- `context`: built, see §10
 - `investigate`: pull the correct reference material (poteto-mode's `bug-fix` playbook only) before building, not `figure-it-out` and not the `investigation` playbook

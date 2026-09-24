@@ -70,9 +70,12 @@ Every skill spec should declare one of these, and the choice should follow this 
 - **Skill** (inline, loaded into the main conversation) when the value is in the discipline being visible and followed in real time, not delegated away: defining scope before work starts, requiring an evidence block at the end of a task, reviewing prose you're about to publish. `scope`, `verify`, `clarity` fit this.
 - `investigate` is the one genuinely ambiguous case in the roadmap, noted there as a live decision, not resolved here, because it depends on whether Zoth wants to watch the hypothesis elimination happen or have it handed back as a finished report.
 
-## Minimum-context discipline (absorbs what `context` was reaching for)
+## Minimum-context discipline
 
-`context` was deferred as its own skill because the source material admits it isn't really invokable on its own; it's a discipline the subagent-based skills should already practice. Stated as a rule instead of a tenth skill: any subagent-based skill (`impact`, `adversary`, `distill`) should be given the task, the specifically relevant files/contracts, and the specifically relevant constraints, not the whole repository by default. If, once these are running, that discipline turns out to need more structure than "remember to scope the context," that's the signal to revisit `context` as an actual skill later, per the roadmap note.
+Any subagent-based skill (`impact`, `adversary`, `distill`, `dev-council`) should be given the task, the specifically relevant files/contracts, and the specifically relevant constraints, not the whole repository by default. This was first stated here as a rule in place of a `context` skill. Once token cost became an observed problem, the rule turned out to need more structure than "remember to scope the context", so `context` now exists as a skill and carries the full discipline, including model choice per role and when not to delegate. Two parts stay here because every skill author needs them, not just the skill at runtime:
+
+- **Descriptions are always loaded.** Every model-invocable skill's description sits in context in every session. Keep it to what's needed to trigger correctly; long trigger-phrase lists cost more than they help.
+- **Fan-out skills are manual-only by default.** A skill that spawns several subagents sets `disable-model-invocation: true` unless there's a stated reason it needs to trigger on its own.
 
 ## Naming and directory convention
 
