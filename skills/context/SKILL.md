@@ -81,5 +81,6 @@ Deferred on the roadmap until context cost was an observed problem rather than a
 ## Interaction with other skills
 
 - **`impact`, `adversary`, `dev-council`:** their subagent briefs follow step 3. Their fan-out size follows step 5.
+- **`handoff`:** when a session has done its job and carrying it further costs more than restarting, suggest `/handoff` and a fresh session instead of pushing on.
 - **`verify`:** step 6 exists for it. Filter output, never the evidence.
 - **Skill authors:** the audit section doubles as a checklist before shipping a new skill: a short description, manual-only if it fans out, a model per role, inline content for what's used every run.

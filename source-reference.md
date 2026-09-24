@@ -44,6 +44,24 @@ Unofficial and unendorsed by Lauren Tan or Cursor. Read it as a second data poin
 | `reflect` | `pstack/skills/reflect/SKILL.md`, `pstack/skills/recall/SKILL.md` | Same resolve-before-building flag as codify |
 | `context` | `pstack/skills/principle-guard-the-context-window/SKILL.md`, `pstack/skills/how/SKILL.md`, `pstack/skills/poteto-mode/SKILL.md` (Subagents section) | The principle is the core; `how` shows scoped explorer briefs; poteto-mode's subagent defaults supply pointers-not-payloads and model per role. `interrogate` and `architect` show the same scoping pattern |
 
+## Second source: mattpocock/skills
+
+`mattpocock/skills` by Matt Pocock (MIT) is a separate collection, not a pstack derivative. It clones directly:
+
+```bash
+git clone https://github.com/mattpocock/skills.git
+# skills live under: skills/<category>/<name>/
+```
+
+| Zoth skill | Read from mattpocock/skills | What was taken, and what changed |
+|---|---|---|
+| `handoff` | `skills/productivity/handoff/SKILL.md`, `skills/in-progress/claude-handoff/SKILL.md` | Taken: point to artifacts instead of copying them, redact, tailor to the next session's focus, suggest skills. Added: verified vs. assumed state, decisions with rejected options, dead ends, a "verify on pickup" section, one next action, a size budget, and destination rules for ephemeral environments where a temp file won't survive. |
+| `adversary` | `skills/engineering/code-review/SKILL.md` | Taken: validate the diff ref once before spawning reviewers; review conformance to the spec as a separate axis; cap reviewer output. Changed: conformance became a selectable surface inside adversary's synthesis rather than a second report that is never merged. |
+| all skills (pruning pass) | `skills/productivity/writing-for-agents/SKILL.md`, "Pruning" section | Taken: the no-op test (does this sentence change behavior versus the model's default?) and single-source-of-truth for each meaning. Applied as an editing pass over existing skill bodies; nothing from it ships as its own skill. |
+| `investigate` (not built) | `skills/engineering/diagnosing-bugs/SKILL.md` | Second reference beside pstack's `bug-fix.md`: builds a fast failing feedback loop before hypothesizing. Read both before building. |
+
+Same caution as for pstack applies: take the mechanism, check each specific rule against `foundation.md`, don't copy text.
+
 ## A caution worth repeating here
 
 Reading the source is for understanding the mechanism and pattern, not for copying text into the zoth version. The whole point of this exercise, from the very first pass on `clarity`, was building on pstack's ideas without inheriting their specific choices uncritically. The em-dash rule is the standing example of a real mistake in the source worth catching, not repeating. Read the original, then check its specific rules against `foundation.md`'s "no absolute/mechanical rules" principle before anything from it goes into a zoth skill.
