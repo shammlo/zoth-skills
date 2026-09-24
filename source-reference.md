@@ -17,7 +17,7 @@ git clone https://github.com/backnotprop/pstack.git
 # skills live under: pstack/skills/
 ```
 
-Both should have identical content. `backnotprop` describes itself explicitly as a mirror of `cursor/plugins/pstack`.
+`backnotprop` describes itself as a mirror of `cursor/plugins/pstack`, but the two are **not** identical. A comparison on 2026-09-24 found 52 files under `skills/` differing, with `cursor/plugins` updated more recently (2026-09-23, against the mirror's 2026-09-14). The differences are real wording changes, not formatting: `blast-radius/SKILL.md`, for example, reads differently between the two. Treat `cursor/plugins` as the source of truth and use the mirror only when the canonical clone fails, noting in the build which copy was read.
 
 ## Also worth reading: the Claude Code port
 

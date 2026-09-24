@@ -1,6 +1,6 @@
 ---
 name: verify
-description: Requires runtime evidence before any implementation task is marked done, not just "typecheck passes, tests pass, ship it." Use this whenever an agent (or Claude itself) is about to report a feature, fix, or migration as complete, especially anything crossing a shared/core package boundary in a monorepo. Trigger on phrases like "done", "implemented", "should work now", "ready for review", or any task summary that lists only static checks (typecheck, lint, unit tests) without describing how the behavior was actually exercised. Especially pushy-trigger on anything touching auth, permissions, payments, file storage/uploads, multi-tenant boundaries, or background jobs. These are the categories where "looks done" has historically not meant "is done."
+description: Requires runtime evidence, not only static checks, before a feature, fix, or migration is reported done. Use when closing out non-trivial implementation work, especially changes to auth, permissions, payments, file storage, multi-tenant queries, background jobs, or a shared package, and whenever a completion summary lists only typecheck, lint, or unit tests. Skip docs-only edits, config tweaks, and one-line changes.
 ---
 
 # Verify
@@ -11,7 +11,7 @@ This is a QA discipline externalized as a skill, not a generic "run tests" remin
 
 ## When this fires
 
-Before accepting or writing any "this is done" summary, whether from a subagent, an AI coding tool, or your own end-of-task report. Applies most forcefully to:
+Before accepting or writing a "this is done" summary for non-trivial implementation work, whether from a subagent, an AI coding tool, or your own end-of-task report. Docs-only edits, config tweaks, and one-line changes don't need the full workflow; a sentence saying how the change was checked is enough. Applies most forcefully to:
 
 - Anything crossing a shared/core package boundary in a monorepo (auth, permissions, file handling, audit logs, translations, or whatever your project's shared layer covers)
 - Auth and permission checks. Did you confirm a request from the *wrong* role/tenant is actually rejected, not just that the right one succeeds?

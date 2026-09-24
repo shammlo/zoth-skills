@@ -1,6 +1,6 @@
 ---
 name: clarity
-description: Reviews prose for AI-generated tells before it's published, covering engineering notebook entries, portfolio copy, READMEs, PR descriptions. Flags patterns and proposes rewrites; never silently rewrites. Use when the user is about to publish public-facing writing, or explicitly asks for a pass on tone/voice. Does NOT apply blanket bans on punctuation or constructions. Every flag is judgment-based on frequency and context, never an absolute rule. Does not run on private notes, commit messages, or personal fiction drafts unless explicitly asked. See domain scoping below.
+description: Reviews public-facing prose (READMEs, PR descriptions, portfolio copy, notebook entries) for AI-generated tells and proposes rewrites; never rewrites silently. Flags by frequency and context, never by blanket bans. Use before publishing, or when asked for a tone/voice pass. Skips private notes, commit messages, and fiction drafts unless asked.
 ---
 
 # Clarity

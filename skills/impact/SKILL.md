@@ -1,6 +1,6 @@
 ---
 name: impact
-description: Produces a Change Impact Map before a change to a shared boundary is made, covering what else the change reaches, categorized, with a reasoned risk rating. Use before touching shared/internal packages, database schema, auth, permissions, storage, infrastructure, or any public API contract. Trigger on "what would this break", "blast radius", "is this change safe", "this should be a small change", or any proposal that describes itself as local to one module while touching a boundary other code depends on. Reports only, never modifies code. Skip it for genuinely trivial changes; this is not a file dependency scanner.
+description: "Maps what a change to a shared boundary reaches before it is made: direct and indirect dependents, categorized, with a reasoned risk rating. Use before changing shared packages, database schema, auth, permissions, storage, infrastructure, or a public API contract, or when a change calls itself \"small\" but touches something other code depends on. Reports only, never modifies code. Skip trivial changes."
 ---
 
 # Impact

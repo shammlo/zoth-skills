@@ -35,6 +35,8 @@ Or take a single skill:
 cp -r zoth-skills/skills/impact ~/.claude/skills/
 ```
 
+`dev-council` and `adversary` are manual-only (`disable-model-invocation: true`): run them with `/dev-council` or `/adversary`. Both fan out to several subagents, so they cost far more than an inline skill, and keeping them out of automatic triggering also keeps their descriptions out of every session's context. Remove that line from a skill's frontmatter if you'd rather Claude invoke it on its own.
+
 Use `~/.claude/skills/` for personal skills or `.claude/skills/` inside a project for project-scoped ones. Skills that ship a log or calibration list start empty and fill in from your own projects, so nothing arrives pre-loaded with someone else's history.
 
 Skill names aren't yet namespace-protected by the Claude Code platform (tracking [anthropics/claude-code#50486](https://github.com/anthropics/claude-code/issues/50486)). If a name collides with another installed plugin's skill, rename on your end for now.

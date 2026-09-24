@@ -1,6 +1,7 @@
 ---
 name: dev-council
-description: "Run a genuine engineering/architecture decision through 5 technical advisors who independently analyze it, peer-review each other anonymously, and synthesize a verdict with explicit reversal conditions. Adapted from Karpathy's LLM Council methodology, retargeted for full-stack development. MANDATORY TRIGGERS: \"council this\", \"dev council\", \"architecture council\", \"pressure-test this design\". STRONG TRIGGERS (only when a real, hard-to-reverse tradeoff is present): \"should I use X or Y for [architecture decision]\", \"should I extract this into a package\", \"review this design/schema/API boundary\", \"am I over-engineering this\". HAS A BUILT-IN GUARD: before convening, the skill scores the decision on reversibility and blast radius. If it's a syntax question, has one documented right answer, or is cheaply reversible, it says so directly and just answers instead of running the council. Do NOT trigger on: syntax questions, canonical how-tos, single-file changes, or anything answerable by checking docs."
+description: "Runs a hard-to-reverse engineering or architecture decision past 3-5 advisors who critique each other anonymously, then synthesizes a verdict with explicit reversal conditions. Run manually with /dev-council. Has a built-in guard: a cheaply reversible or single-answer question gets a direct answer instead of a council."
+disable-model-invocation: true
 ---
 
 # Dev Council
@@ -158,6 +159,8 @@ Frame neutrally, including: the core decision, real constraints (stack, team siz
 ### step 2: convene advisors in parallel
 
 Level 1 → 3 advisors. Level 2 → all 5. Always parallel, never sequential.
+
+**Model per role.** Where the host lets you choose a subagent's model (in Claude Code, the Agent tool's `model` parameter), run advisors and peer reviewers on a mid-tier model such as `sonnet`. Their job is to argue one concern within a word cap. Nicron's synthesis is where the judgment is, so it stays on the strongest model. Advisors get the framed question, not the raw files the scan read.
 
 Each gets their concern, the framed question, the standing rules, and this instruction: respond independently, don't hedge, don't try to be balanced, lean fully into your concern.
 
