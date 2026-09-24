@@ -1,6 +1,7 @@
 ---
 name: reflect
-description: "Captures lessons from work that succeeded and routes each one to where it should live: a test, a rule, a constraint, a skill, or nowhere. Proposes routings; applies none unasked. Use after a shipped feature, completed migration, or landed refactor, or on \"reflect\", \"retro\", \"what did we learn\". Not for failures; those belong in `verify`'s incident log."
+description: "Captures lessons from work that succeeded and routes each one to where it should live: a test, a rule, a constraint, a skill, or nowhere. Proposes routings; applies none unasked. Run manually with /reflect after a shipped feature, completed migration, or landed refactor. Not for failures; those belong in `verify`'s incident log."
+disable-model-invocation: true
 ---
 
 # Reflect

@@ -10,7 +10,6 @@ One line of reasoning has one blind spot. For small, reversible changes that's f
 
 ## the council's objective
 
-[#objective](#objective)
 
 **The goal is not to find the most sophisticated architecture. The goal is to find the simplest architecture that remains correct under the actual requirements and foreseeable constraints.**
 
@@ -22,9 +21,8 @@ Every advisor is bound by this. It exists because a council can otherwise reach 
 
 ## step 0: the guard (always run this first)
 
-[#step-0-the-guard](#step-0-the-guard)
 
-Run this even when the user says "council this" explicitly. The mandatory trigger phrase skips the decision to *consider* a council, not the check for whether one is warranted.
+Run this even when the user says "council this" explicitly: "council this: `const` or `let`" still gets Level 0. Invoking the skill skips the decision to *consider* a council, not the check for whether one is warranted.
 
 Score the decision on five dimensions:
 
@@ -49,7 +47,7 @@ Cross-cutting architecture, data model or API contract, security boundary, spans
 
 **Scope check on that clause.** "Costly to get wrong" is elastic enough to justify Level 2 for nearly anything if used loosely. It applies when a wrong choice causes damage that accrues *before* the mistake becomes visible: security exposure, data corruption, a contract consumers have already built against, a pattern copied into three places before anyone questions it. It does not apply merely because the decision feels important or the user is invested in it. If you can't name the specific accruing damage, it isn't this clause.
 
-The question is not "council or no council." It's *how much reasoning does this decision deserve.* When genuinely torn between two levels, take the lower one and say so. Under-councilling costs a follow-up, over-councilling costs tokens and manufactures false rigor.
+The question is not "council or no council." It's *how much reasoning does this decision deserve.* When genuinely torn between two levels, take the lower one and say so. Never tier upward because the user asked enthusiastically; if they insist on Level 2 for a Level 1 decision, run it, but say the extra passes are unlikely to change the answer. Under-councilling costs a follow-up, over-councilling costs tokens and manufactures false rigor.
 
 **Level 2 examples:**
 - "Should this get extracted into a shared package, or stay local to one app"
@@ -73,7 +71,6 @@ The question is not "council or no council." It's *how much reasoning does this 
 
 ## the standing rules (every advisor, every round)
 
-[#standing-rules](#standing-rules)
 
 These bind all five advisors and Nicron. They exist because five confident opinions are worse than one if none of them are grounded.
 
@@ -96,7 +93,6 @@ Zero consumers is not proof an abstraction is wrong, but it is proof the abstrac
 
 ## the Six
 
-[#the-six](#the-six)
 
 | Seat | Engineering role | Primary question |
 | --- | --- | --- |
@@ -139,7 +135,6 @@ A competent engineer encountering this cold, with zero tribal knowledge, and the
 
 ## how a session works
 
-[#how-a-session-works](#how-a-session-works)
 
 ### step 1: frame the question with codebase context
 
@@ -241,14 +236,3 @@ prefer a qualitative trigger you can actually detect over an invented metric.]
 
 Markdown, in-conversation. No generated files unless the user asks to save the transcript.
 
----
-
-## important notes
-
-- **The guard runs every time.** "Council this: `const` or `let`" still gets Level 0.
-- **Never skip tiering upward.** A Level 1 decision does not get a full council because the user asked enthusiastically. If they insist, run Level 2 but say the extra passes are unlikely to change the answer.
-- **Spawn advisors in parallel.** Sequential lets earlier answers contaminate later ones.
-- **Always anonymize peer review.** Otherwise reviewers defer to a perceived-authoritative advisor rather than the argument.
-- **Nicron can overrule the majority** with stated reasoning. Evidence, not headcount.
-- **Be hostile to architecture for its own sake.** In projects where documentation and architectural thinking run ahead of actual consumers, a council can actively make things worse by rewarding elegant abstractions that nothing needs. When in doubt between "extract it" and "leave it local," the burden of proof is on extraction.
-- **This is not a default mode.** Most engineering decisions, even ones with real tradeoffs, are better served by direct reasoning with pushback. Reserve this for genuinely expensive-to-reverse calls.

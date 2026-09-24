@@ -37,7 +37,7 @@ Or take a single skill:
 cp -r zoth-skills/skills/impact ~/.claude/skills/
 ```
 
-`dev-council`, `adversary`, and `handoff` are manual-only (`disable-model-invocation: true`): run them with `/dev-council`, `/adversary`, or `/handoff`. The first two fan out to several subagents, so they cost far more than an inline skill; `handoff` only makes sense when you decide a session is done. Keeping them out of automatic triggering also keeps their descriptions out of every session's context. Remove that line from a skill's frontmatter if you'd rather Claude invoke it on its own.
+`dev-council`, `adversary`, `reflect`, and `handoff` are manual-only (`disable-model-invocation: true`): run them with `/dev-council`, `/adversary`, `/reflect`, or `/handoff`. The first two fan out to several subagents, so they cost far more than an inline skill; `reflect` and `handoff` only make sense when you decide a piece of work or a session is done. Keeping them out of automatic triggering also keeps their descriptions out of every session's context. Remove that line from a skill's frontmatter if you'd rather Claude invoke it on its own.
 
 Use `~/.claude/skills/` for personal skills or `.claude/skills/` inside a project for project-scoped ones. Skills that ship a log or calibration list start empty and fill in from your own projects, so nothing arrives pre-loaded with someone else's history.
 
