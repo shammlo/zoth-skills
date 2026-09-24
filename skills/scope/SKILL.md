@@ -89,4 +89,5 @@ Scope:
 
 - **`verify`** asks how you'll know the work succeeded; this asks what the work is. They chain: the required list here becomes the observable done-criteria in `verify` step 1. Scope defines the boundary, verify proves the inside of it was built.
 - **`impact`** traces what a change reaches, which is a different question from what work is in bounds. Run scope first. It's cheaper and often shows the change is smaller than assumed. If `impact` later finds reach nobody expected, that's a reason to re-scope.
+- **`adversary`** measures the finished diff against this statement on its scope-conformance surface: required items missing, excluded items built anyway. A written scope statement is what makes that surface available at all.
 - **`reflect`** sometimes produces lessons about scope itself: a category of work that keeps getting silently included, or an exclusion that keeps turning out wrong. Those route well as an addition to the boundary patterns reference.
