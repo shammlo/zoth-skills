@@ -28,11 +28,17 @@ Reviewers challenge whether the change *achieves* the intent. They don't challen
 
 ## Workflow
 
+### 0. Pin the diff before anything else
+
+Resolve the base (`git rev-parse <base>`), confirm the diff against it is non-empty, and record the exact diff command and commit list once. Every reviewer gets that same command. A bad ref or an empty diff should fail here, at the cost of one command, not inside four parallel reviewers that each start cold and each report "nothing to review."
+
+If a scope statement exists for this work (from `scope`, a spec, an issue, or the PR body), locate it now. It decides whether the scope-conformance surface below is available.
+
 ### 1. Select the surfaces
 
-Ten surfaces are available: correctness, security, data integrity, architecture, concurrency, failure handling, performance, maintainability, testing, operations. Full definitions and selection cues are in `references/surface-rubrics.md`.
+Eleven surfaces are available: correctness, scope conformance, security, data integrity, architecture, concurrency, failure handling, performance, maintainability, testing, operations. Full definitions and selection cues are in `references/surface-rubrics.md`.
 
-**Select. Do not run all ten.** Running every surface on every change is the mechanical version of this skill, and it fails in a specific way: ten reviewers each obligated to produce findings will produce findings, and the real one arrives buried in eight speculative ones. A change with no concurrent access doesn't need a concurrency reviewer, and asking for one anyway teaches the reader to skim.
+**Select. Do not run all eleven.** Running every surface on every change is the mechanical version of this skill, and it fails in a specific way: ten reviewers each obligated to produce findings will produce findings, and the real one arrives buried in eight speculative ones. A change with no concurrent access doesn't need a concurrency reviewer, and asking for one anyway teaches the reader to skim.
 
 Three or four surfaces is typical. Choose them from what the change actually touches, and **name the ones you didn't select and why**. That list goes in the output. A surface skipped deliberately is a decision; a surface skipped silently is a gap wearing a decision's clothes.
 
@@ -53,7 +59,7 @@ Where the host allows it, vary the model across reviewers as a secondary source 
 
 - Hand each reviewer the diff and file paths, not pasted file contents. It opens only what its surface needs.
 - Where the host lets you choose a subagent's model (in Claude Code, the Agent tool's `model` parameter), run reviewers on a mid-tier model such as `sonnet`. Keep the strongest model for the synthesis in step 3, where the judgment is. A surface that needs the stronger model (subtle concurrency, a security boundary) can have it; that is a per-change call, not a default.
-- Cap each reviewer's report: findings with evidence, nothing restated from the diff or the intent.
+- Cap each reviewer's report at about 400 words: findings with evidence, nothing restated from the diff or the intent. A reviewer with more to say than that is usually padding weak findings around one strong one, and the cap forces it to rank.
 
 ### 3. Synthesize
 
@@ -112,5 +118,6 @@ Verdict:
 ## Interaction with other skills
 
 - **`impact`** runs before the change and maps what it will reach. This runs after and attacks what was written. If `impact` flagged consumers, they are a strong candidate for the correctness or data-integrity surface here.
+- **`scope`** produces the statement the scope-conformance surface measures against. Without one, that surface is skipped and the output says so.
 - **`verify`** asks whether the change was proven to work at runtime. This asks whether it is correct in ways runtime evidence wouldn't surface. Complementary: a change can pass its evidence block and still fail here.
 - **A pre-implementation design review** asks whether to build it. Deliberately a different reviewer, for the anchoring reason at the top of this file.

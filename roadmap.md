@@ -237,6 +237,18 @@ Already built. Optional future integration: let it consume `impact` and `investi
 
 ---
 
+## 11. handoff: BUILT
+
+**Inspired by (verified):** `mattpocock/skills` `handoff` and `claude-handoff` (see `source-reference.md`).
+
+**Named incident:** the same token-cost report behind `context`. The audit's largest remaining cost was session length itself, since every turn resends the whole conversation. Starting fresh is the fix; this makes it safe.
+
+**Interface:** skill, manual-only. Starting a new session is the user's call, so the skill never fires on its own.
+
+**Status:** first draft complete (`SKILL.md` only).
+
+---
+
 ## Build order note
 
 - `distill` runs after `verify`

@@ -17,6 +17,7 @@ Listed roughly in the order you'd reach for them across a piece of work.
 | [adversary](skills/adversary) | Attacks an already-implemented change across selected attack surfaces, one independent reviewer per surface, and synthesizes a single verdict. Shows the findings it ruled out, not only the ones that survived. |
 | [reflect](skills/reflect) | Captures lessons from work that succeeded and routes each one to where it should actually live: a test, a rule, an architecture constraint, a skill, or nowhere. Treats "nowhere" as a real answer rather than a failed run. |
 | [context](skills/context) | Keeps the main conversation's context spent on what changes the next decision: reads selectively, routes bulk to subagents that return summaries, briefs them with pointers instead of payloads. Also audits a skill set for where its token cost hides. |
+| [handoff](skills/handoff) | Condenses a session into a short note a fresh session can resume from: pointers to existing artifacts instead of copies, verified state kept apart from assumptions, decisions recorded with the options rejected, and checks to run before trusting any of it. Manual-only. |
 | [technical-writing](skills/technical-writing) | Structure and plain sentences for anything an engineer reads to act on: end-of-task reports, PR descriptions, commit messages, docs. Reports lead with the outcome, state what was and wasn't checked, and end with what the reader must do. |
 | [clarity](skills/clarity) | Reviews prose for AI-generated tells before publishing, sorted into three tiers by how much context decides whether the pattern is a problem. Flags and proposes; never rewrites silently, and never bans a construction outright. |
 
@@ -37,7 +38,7 @@ Or take a single skill:
 cp -r zoth-skills/skills/impact ~/.claude/skills/
 ```
 
-`dev-council` and `adversary` are manual-only (`disable-model-invocation: true`): run them with `/dev-council` or `/adversary`. Both fan out to several subagents, so they cost far more than an inline skill, and keeping them out of automatic triggering also keeps their descriptions out of every session's context. Remove that line from a skill's frontmatter if you'd rather Claude invoke it on its own.
+`dev-council`, `adversary`, `reflect`, and `handoff` are manual-only (`disable-model-invocation: true`): run them with `/dev-council`, `/adversary`, `/reflect`, or `/handoff`. The first two fan out to several subagents, so they cost far more than an inline skill; `reflect` and `handoff` only make sense when you decide a piece of work or a session is done. Keeping them out of automatic triggering also keeps their descriptions out of every session's context. Remove that line from a skill's frontmatter if you'd rather Claude invoke it on its own.
 
 Use `~/.claude/skills/` for personal skills or `.claude/skills/` inside a project for project-scoped ones. Skills that ship a log or calibration list start empty and fill in from your own projects, so nothing arrives pre-loaded with someone else's history.
 
@@ -49,7 +50,7 @@ Built by Shamlo, who goes by Zoth. Portfolio and writing: [shamlo.dev](https://s
 
 Some skills borrow names from a speculative fiction universe I'm writing. The naming is an identity layer; the engineering roles underneath are always stated explicitly.
 
-Several skills adapt patterns from [pstack](https://github.com/cursor/plugins/tree/main/pstack) by Lauren Tan (MIT), reworked rather than copied. See [source-reference.md](source-reference.md).
+Several skills adapt patterns from [pstack](https://github.com/cursor/plugins/tree/main/pstack) by Lauren Tan (MIT), reworked rather than copied. Others take ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) (MIT), also reworked rather than copied. See [source-reference.md](source-reference.md) for what came from where.
 
 ## License
 

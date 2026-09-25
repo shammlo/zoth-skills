@@ -2,7 +2,7 @@
 
 One rubric per attack surface. Each reviewer receives **only its own rubric**, plus the intent and the diff.
 
-**Select three or four. Selecting all ten is the failure mode this file exists to prevent**. Ten reviewers each expected to produce findings will produce findings, and the real one ends up buried. Each rubric below opens with a "select this when" cue. If none of the cues match the change, that surface isn't relevant, and saying so in the output is a result.
+**Select three or four. Selecting all eleven is the failure mode this file exists to prevent**. Ten reviewers each expected to produce findings will produce findings, and the real one ends up buried. Each rubric below opens with a "select this when" cue. If none of the cues match the change, that surface isn't relevant, and saying so in the output is a result.
 
 ---
 
@@ -13,6 +13,18 @@ One rubric per attack surface. Each reviewer receives **only its own rubric**, p
 Does the code do what the intent says? Trace the actual paths, not the happy one. Off-by-one and boundary conditions. Empty, null, and single-element inputs. Error paths that swallow, mask, or re-raise wrongly. Return values that differ from what callers expect. Conditions that read correctly and evaluate wrongly. State that's mutated when the caller assumed a copy.
 
 Ask specifically: what input makes this wrong? Name it concretely rather than gesturing at a category.
+
+## Scope conformance
+
+*Select when:* a scope statement, spec, issue, or written request exists to measure against. Without one there is nothing to conform to; say so in the output rather than reviewing against an intent you inferred yourself.
+
+Does the diff do what was asked, and only that? Three kinds of finding, each quoting the line of the scope statement it rests on:
+
+- **Missing or partial.** A required item with no implementation, or a partial one presented as complete.
+- **Unrequested.** Behavior the scope didn't ask for, especially anything the scope statement explicitly excluded. Scope creep in a diff is a finding even when the extra code is correct, because it widens what has to be reviewed and verified.
+- **Implemented, but not as specified.** The item exists and does something other than what the scope describes.
+
+This is the one surface that can fail a change whose code is flawless. A correct implementation of the wrong thing passes every other rubric in this file, which is why it is kept separate from correctness rather than folded into it.
 
 ## Security
 

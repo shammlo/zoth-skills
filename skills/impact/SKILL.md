@@ -56,7 +56,7 @@ See `references/surface-checklist.md` for the full list of places to look, and f
 
 ### 3. Categorize
 
-Sort every finding into these, and say plainly when a category is empty:
+Sort every finding into these. State an empty category explicitly: silently omitted, it reads as "not applicable" when it often means "not checked."
 
 - **Code.** Call sites, imports, type dependencies
 - **Data / database.** Schema, migrations, existing rows, queries reading the changed shape
@@ -65,8 +65,6 @@ Sort every finding into these, and say plainly when a category is empty:
 - **Background jobs.** Workers, cron, queues, webhooks, anything running outside the request that made the change
 - **Tests.** What coverage exists for the reach, and where there is none
 - **Backwards compatibility.** What breaks for clients on the old shape during and after the change
-
-An empty category stated explicitly is information. An empty category silently omitted reads as "not applicable" when it often means "not checked."
 
 ### 4. Risk rating, with the reasoning shown
 

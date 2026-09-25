@@ -5,9 +5,7 @@ description: Requires runtime evidence, not only static checks, before a feature
 
 # Verify
 
-Static checks passing is not evidence the feature works. This skill exists because an agent that reports "typecheck clean, tests green" has told you the code compiles and the tests it wrote pass. It has not told you the thing behaves correctly when actually run. This is the gap this skill closes.
-
-This is a QA discipline externalized as a skill, not a generic "run tests" reminder. The bar: a "done" claim backed by both test count and a description of what was actually executed at runtime. For example, "135 tests green + typecheck clean" is the *right shape* of evidence, and this skill exists to make that the floor for every task, not just the ones where it happened to be top of mind.
+Static checks passing is not evidence the feature works. An agent that reports "typecheck clean, tests green" has told you the code compiles and the tests it wrote pass, not that the thing behaves correctly when run. The bar here: every "done" claim carries both the test count and a description of what was actually executed at runtime, on every task, not just the ones where it happened to be top of mind.
 
 ## When this fires
 
@@ -69,8 +67,8 @@ This is deliberately narrow: it only applies to lessons from verification failur
 
 ## Known failure modes (fill this in as it happens)
 
-This section is the actual point of adapting this skill instead of using a generic version. It should accumulate real incidents from your own repos, so future runs check for the specific things that have actually bitten you, not a generic checklist. See `references/incident-log.md`. Add an entry any time something passed typecheck + tests and still shipped broken. This starts empty for every installer. It gets longer and more specific to your own projects over time, not pre-loaded with anyone else's history.
+`references/incident-log.md` accumulates real incidents from your own projects, so future runs check for what has actually bitten you rather than a generic list. Add an entry whenever something passed typecheck and tests and still shipped broken. It starts empty for every installer.
 
 ## Interaction with a design-review skill and an impact-mapping skill
 
-This skill runs *after* implementation, as the last gate before "done." It doesn't replace a design-review step (which reviews the design/diff before or during implementation, see `dev-council` if you have one) or an impact-mapping skill (which traces what a shared-package change touches before you commit to it, see `impact` if you have one). If an impact map flagged consumers of a changed module, this skill's evidence block should include runtime confirmation that those specific consumers still behave correctly, not just that the module's own tests pass.
+This skill runs *after* implementation, as the last gate before "done." It doesn't replace a design review before implementation (`dev-council`) or an impact map of what a shared-boundary change reaches (`impact`). If an impact map flagged consumers of a changed module, this skill's evidence block should include runtime confirmation that those specific consumers still behave correctly, not just that the module's own tests pass.
