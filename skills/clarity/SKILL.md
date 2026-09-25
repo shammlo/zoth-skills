@@ -1,6 +1,6 @@
 ---
 name: clarity
-description: Reviews public-facing prose (READMEs, PR descriptions, portfolio copy, notebook entries) for AI-generated tells and proposes rewrites; never rewrites silently. Flags by frequency and context, never by blanket bans. Use before publishing, or when asked for a tone/voice pass. Skips private notes, commit messages, and fiction drafts unless asked.
+description: Removes AI-generated tells from prose. On public-facing writing (READMEs, portfolio copy, notebook entries) it flags and proposes rewrites, never rewriting silently. On an agent's own end-of-task report or PR description it applies the fixes while drafting. Judges by frequency and context, never by blanket bans. Skips commit messages, private notes and fiction unless asked.
 ---
 
 # Clarity
@@ -9,15 +9,17 @@ Reviews writing for AI-generated tells and proposes fixes, but never at the cost
 
 ## The rule this skill can't violate
 
-No absolute bans. Every flag is "here's a pattern, here's why, here's a suggested fix", never a silent rewrite, never a rule shaped like "never use X." In particular, don't ban em dashes outright, as some prose-cleanup rule sets do. Punctuation and rhetorical choices get judged by frequency and fit, not banned by category.
+No absolute bans. Every flag is "here's a pattern, here's why, here's a suggested fix", never a silent rewrite, never a rule shaped like "never use X." The one exception is the agent's own draft in report mode (below): there is no one to propose to, so it applies the fixes while writing. In particular, don't ban em dashes outright, as some prose-cleanup rule sets do. Punctuation and rhetorical choices get judged by frequency and fit, not banned by category.
 
 ## Domain scoping, decide this before running
 
 Ask, or infer from context, which mode applies:
 
-**Technical/professional mode** (engineering notebook, portfolio, READMEs, docs, PR descriptions): apply the full pattern reference normally. Puffery, empty superlatives, and AI vocabulary are almost always worth cutting here. First-person voice and stated opinion are usually strengths, not tells, in this register.
+**Technical/professional mode** (engineering notebook, portfolio, READMEs, docs, PR descriptions someone else wrote): apply the full pattern reference normally. Puffery, empty superlatives, and AI vocabulary are almost always worth cutting here. First-person voice and stated opinion are usually strengths, not tells, in this register.
 
 **Fiction mode** (a personal fiction project, whatever that looks like for the installer): Tier 3 patterns are off by default. Elevated diction, ceremonial phrasing, and structural repetition may be deliberate stylistic choices serving character voice or mythic register, not AI tells. Only run Tier 1 (true filler/empty-superlative cuts) unless the user explicitly asks for a full pass. When in doubt on a fiction passage, flag it as a question rather than a recommendation: "this reads either as intentional elevated register or as a tell. Which is it?"
+
+**Report mode** (an end-of-task report or PR description the agent is writing itself): apply Tier 1 and Tier 2 while drafting, silently, with no findings list. These are read by the owner on every task, so filler, hedging and puffery cost the most here. Structure comes from `technical-writing`; this skill only removes the tells.
 
 **Internal/private mode** (commit messages, working notes): this skill should not fire here by default. If asked to run anyway, treat it as technical mode but hold every flag to a higher bar. Internal writing doesn't need the same polish as anything public-facing.
 

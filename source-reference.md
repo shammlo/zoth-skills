@@ -38,6 +38,7 @@ Unofficial and unendorsed by Lauren Tan or Cursor. Read it as a second data poin
 | `adversary` | `pstack/skills/interrogate/SKILL.md` | |
 | `investigate` | `pstack/skills/poteto-mode/playbooks/bug-fix.md` | **Not** `figure-it-out`, and not `investigation.md` either. Confirmed by direct read: `investigation.md` covers read-only explanation requests with no hypothesis tracking in it. `bug-fix.md` is the actual source for the observe/reproduce/trace/hypothesize workflow this skill needs. |
 | `scope` | `pstack/skills/poteto-mode/SKILL.md` | The routing/scope-discipline logic lives in the main poteto-mode file itself |
+| `technical-writing` | `pstack/skills/technical-writing/SKILL.md` | Made model-invoked; adds a section for agent reports; defers punctuation to `clarity` instead of banning em dashes; points at `clarity` instead of `unslop` |
 | `distill` | `pstack/skills/unslop/SKILL.md`, `pstack/skills/principle-subtract-before-you-add/SKILL.md` | Distill is unslop's subtraction philosophy applied to code instead of prose; read both |
 | `clarity` | `pstack/skills/unslop/SKILL.md` | Same source as distill, different application: this is the prose-facing half |
 | `codify` | `pstack/skills/principle-encode-lessons-in-structure/SKILL.md` | Resolve the overlap with verify's incident log (see roadmap) before building either |

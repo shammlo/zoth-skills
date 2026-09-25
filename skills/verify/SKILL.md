@@ -28,6 +28,8 @@ Before implementation begins, write down, in a sentence or two, what observable 
 
 Typecheck and lint clean, and the relevant unit/integration test suite passes. This is necessary and non-negotiable, but insufficient on its own. Never report a task as done on the strength of this step alone.
 
+"Relevant" means the tests of what changed, run at the cadence the repo sets. If the repo defines a test cadence (for example, full suites only every few PRs), follow it: runtime evidence is a reason to exercise the changed behavior once, not to re-run whole suites or prove a failure pre-existed.
+
 ### 3. Runtime exercise, the step agents skip
 
 Actually run the thing. This means one of:
