@@ -1,6 +1,6 @@
 ---
 name: scope
-description: Defines what work is required, what is related but optional, and what is deliberately not being done, before implementation starts. Each exclusion carries a one-line reason, so a boundary is a decision rather than an omission. Use before starting non-trivial work, and especially before delegating a task to another agent. Trigger on "before we start", "what's in scope", "should this include", "while you're in there", or any request broad enough that two people could read it differently. Produces a scope statement; doesn't implement anything.
+description: Defines required, optional, and deliberately excluded work before implementation starts, with a one-line reason per exclusion. Use before non-trivial work, especially before delegating to another agent, or when a request is broad enough to read two ways ("while you're in there", "should this include"). Produces a scope statement; implements nothing.
 ---
 
 # Scope

@@ -1,6 +1,7 @@
 ---
 name: adversary
-description: Adversarially reviews an already-implemented change across selected attack surfaces, then synthesizes the findings into a single verdict. Reports only, never modifies code. Use after implementation and before merge or deploy, on non-trivial changes. Trigger on "review this diff", "tear this apart", "what did I miss", "stress test this", "find blind spots", "is this ready to merge", or any request to challenge work that already exists. Not for pre-implementation design questions. That is a different question asked by a different reviewer.
+description: Adversarially reviews an already-implemented change across selected attack surfaces, one read-only reviewer per surface, and synthesizes a PASS / PASS WITH CHANGES / FAIL verdict. Reports only, never modifies code. Run manually with /adversary after implementation and before merge, on non-trivial changes. Not for pre-implementation design questions; that is dev-council.
+disable-model-invocation: true
 ---
 
 # Adversary
@@ -47,6 +48,12 @@ Spawn one read-only subagent per selected surface, in parallel. Each gets:
 Not the whole repository, and not the other surfaces' rubrics. Independence is the point: a reviewer that has read the security rubric will find security issues from the performance seat, and the overlap between surfaces stops being evidence of anything. Correlated reviewers produce agreement that looks like confirmation and isn't.
 
 Where the host allows it, vary the model across reviewers as a secondary source of diversity. Be honest about how much that buys: reviewers from one vendor share priors and blind spots, so within a single family this is a weaker signal than genuine cross-vendor diversity would be. Surface separation is doing the real work here; model variation is a bonus, not the mechanism.
+
+**Keep the fan-out cheap.** This step is where the skill's cost lives: every reviewer starts cold.
+
+- Hand each reviewer the diff and file paths, not pasted file contents. It opens only what its surface needs.
+- Where the host lets you choose a subagent's model (in Claude Code, the Agent tool's `model` parameter), run reviewers on a mid-tier model such as `sonnet`. Keep the strongest model for the synthesis in step 3, where the judgment is. A surface that needs the stronger model (subtle concurrency, a security boundary) can have it; that is a per-change call, not a default.
+- Cap each reviewer's report: findings with evidence, nothing restated from the diff or the intent.
 
 ### 3. Synthesize
 

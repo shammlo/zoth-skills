@@ -17,7 +17,7 @@ git clone https://github.com/backnotprop/pstack.git
 # skills live under: pstack/skills/
 ```
 
-Both should have identical content. `backnotprop` describes itself explicitly as a mirror of `cursor/plugins/pstack`.
+`backnotprop` describes itself as a mirror of `cursor/plugins/pstack`, but the two are **not** identical. A comparison on 2026-09-24 found 52 files under `skills/` differing, with `cursor/plugins` updated more recently (2026-09-23, against the mirror's 2026-09-14). The differences are real wording changes, not formatting: `blast-radius/SKILL.md`, for example, reads differently between the two. Treat `cursor/plugins` as the source of truth and use the mirror only when the canonical clone fails, noting in the build which copy was read.
 
 ## Also worth reading: the Claude Code port
 
@@ -42,7 +42,7 @@ Unofficial and unendorsed by Lauren Tan or Cursor. Read it as a second data poin
 | `clarity` | `pstack/skills/unslop/SKILL.md` | Same source as distill, different application: this is the prose-facing half |
 | `codify` | `pstack/skills/principle-encode-lessons-in-structure/SKILL.md` | Resolve the overlap with verify's incident log (see roadmap) before building either |
 | `reflect` | `pstack/skills/reflect/SKILL.md`, `pstack/skills/recall/SKILL.md` | Same resolve-before-building flag as codify |
-| `context` (deferred) | `pstack/skills/how/SKILL.md`, `pstack/skills/interrogate/SKILL.md`, `pstack/skills/architect/SKILL.md` | Not building this as its own skill yet; these three show how pstack scopes context for their own subagents, useful once revisited |
+| `context` | `pstack/skills/principle-guard-the-context-window/SKILL.md`, `pstack/skills/how/SKILL.md`, `pstack/skills/poteto-mode/SKILL.md` (Subagents section) | The principle is the core; `how` shows scoped explorer briefs; poteto-mode's subagent defaults supply pointers-not-payloads and model per role. `interrogate` and `architect` show the same scoping pattern |
 
 ## A caution worth repeating here
 

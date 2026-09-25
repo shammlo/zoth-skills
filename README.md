@@ -16,6 +16,7 @@ Listed roughly in the order you'd reach for them across a piece of work.
 | [verify](skills/verify) | Requires runtime evidence before a task is called done, rather than "typecheck passes, tests pass, ship it." Closes with an evidence block that states what wasn't verified instead of omitting it. |
 | [adversary](skills/adversary) | Attacks an already-implemented change across selected attack surfaces, one independent reviewer per surface, and synthesizes a single verdict. Shows the findings it ruled out, not only the ones that survived. |
 | [reflect](skills/reflect) | Captures lessons from work that succeeded and routes each one to where it should actually live: a test, a rule, an architecture constraint, a skill, or nowhere. Treats "nowhere" as a real answer rather than a failed run. |
+| [context](skills/context) | Keeps the main conversation's context spent on what changes the next decision: reads selectively, routes bulk to subagents that return summaries, briefs them with pointers instead of payloads. Also audits a skill set for where its token cost hides. |
 | [clarity](skills/clarity) | Reviews prose for AI-generated tells before publishing, sorted into three tiers by how much context decides whether the pattern is a problem. Flags and proposes; never rewrites silently, and never bans a construction outright. |
 
 They're built to work as one system rather than as separate tools. Each one reports and proposes instead of changing things on its own, shows the reasoning behind a finding instead of asserting a verdict, and states what it didn't check rather than letting an unchecked thing pass as a checked one. Skills that need a longer pattern list, checklist, or log keep it in a `references/` directory and load it on demand.
@@ -34,6 +35,8 @@ Or take a single skill:
 ```bash
 cp -r zoth-skills/skills/impact ~/.claude/skills/
 ```
+
+`dev-council` and `adversary` are manual-only (`disable-model-invocation: true`): run them with `/dev-council` or `/adversary`. Both fan out to several subagents, so they cost far more than an inline skill, and keeping them out of automatic triggering also keeps their descriptions out of every session's context. Remove that line from a skill's frontmatter if you'd rather Claude invoke it on its own.
 
 Use `~/.claude/skills/` for personal skills or `.claude/skills/` inside a project for project-scoped ones. Skills that ship a log or calibration list start empty and fill in from your own projects, so nothing arrives pre-loaded with someone else's history.
 
