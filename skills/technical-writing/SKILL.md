@@ -1,6 +1,6 @@
 ---
 name: technical-writing
-description: Structure and plain sentences for writing an engineer acts on: end-of-task reports, PR descriptions, commit messages, docs, RFCs. Use when drafting or reviewing any of these, including your own report at the end of a task. Pair with clarity, which owns voice.
+description: Structure and plain sentences for writing an engineer acts on, end-of-task reports, PR descriptions, commit messages, docs, RFCs. Use when drafting or reviewing any of these, including your own report at the end of a task. Pair with clarity, which owns voice.
 ---
 
 # Technical writing
